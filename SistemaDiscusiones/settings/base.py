@@ -1,9 +1,9 @@
-import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+from unipath import Path
+BASE_DIR = Path(__file__).ancestor(3)
 
 SECRET_KEY = '64w=f&(cp9d8nbc^*elfp*npc0zp1ju4svu*teudy_84qmqx%#'
 
-INSTALLED_APPS = (
+DJANGO_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -11,6 +11,16 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 )
+
+THIRD_PARTY_APPS = (
+    
+)
+
+LOCAL_APPS = (
+    
+)
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -35,3 +45,5 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+TEMPLATE_DIRS =[BASE_DIR.child('templates')]
